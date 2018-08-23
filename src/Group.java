@@ -69,12 +69,18 @@ public class Group {
 	}
 	
 	
-	public Group serchByLastName(String s) {
-		Group  groupLastName = new Group();
+	public Student [] serchByLastName(String s) {
 		int flag =0;
 		for (int i = 0; i < students.length; i++) {
 			if (s.equals(students[i].getLastName())) {
-				groupLastName.students[flag]=students[i];
+				flag++;
+			} 
+		}
+		Student []  groupLastName = new Student[flag];
+		flag=0;
+		for (int i = 0; i < students.length; i++) {
+			if (s.equals(students[i].getLastName())) {
+				groupLastName[flag]=students[i];
 				flag++;
 			} 
 		}

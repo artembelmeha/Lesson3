@@ -1,3 +1,6 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 public class Main {
@@ -33,7 +36,7 @@ public class Main {
 		} 
 		System.out.println(gr6yearKPI.toString());
 
-		System.out.println(gr6yearKPI.serchByLastName("Durov").toString());
+		System.out.println(Arrays.toString(gr6yearKPI.serchByLastName("Durov")));
 		
 	}
 
