@@ -1,5 +1,6 @@
 
-public class Student extends Human {
+
+public class Student extends Human implements Comparable{
 	private int yearOfEducation; 
 	private String university;
 	public Student() {
@@ -37,6 +38,16 @@ public class Student extends Human {
 		result = prime * result + ((university == null) ? 0 : university.hashCode());
 		result = prime * result + yearOfEducation;
 		return result;
+	}
+	
+	@Override
+	public int compareTo(Object o) {
+		if(o == null) {
+			return -1;
+		}
+		Student stud =(Student) o;
+	
+		return this.getLastName().compareToIgnoreCase(stud.getLastName());
 	}
 	@Override
 	public boolean equals(Object obj) {

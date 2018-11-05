@@ -6,8 +6,8 @@ import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 public class Main {
 
 	public static void main(String[] args) {
-		Student st1=new Student("Ivan", "Petrov","Ivanovich",25,Sex.MALE, 6,"KPI");
-		Student st2=new Student("Anna", "Davidova","Viktorivna",21,Sex.FEMALE, 2,"DNU");
+		Student st1=new Student("Ivan", "Petrov","Ivanovich",16,Sex.MALE, 6,"KPI");
+		Student st2=new Student("Anna", "Davidova","Viktorivna",17,Sex.FEMALE, 2,"DNU");
 		Student st3=new Student("Ikar", "Niton","Petrovich",24,Sex.MALE, 6,"KPI");
 		Student st4=new Student("Yulia", "Antonova","Lionovna",25,Sex.FEMALE, 6,"KPI");
 		Student st5=new Student("Oleh", "Durov","Stepanovich",25,Sex.MALE, 6,"KPI");
@@ -25,18 +25,27 @@ public class Main {
 			gr6yearKPI.addStudent(st8);
 			gr6yearKPI.addStudent(st7);
 			gr6yearKPI.addStudent(st6);
-			gr6yearKPI.addStudent(st5);
-			gr6yearKPI.addStudent(st9);
-			gr6yearKPI.addStudent(st10);
-			gr6yearKPI.addStudent(st5);
-			gr6yearKPI.addStudent(st5);
+//			gr6yearKPI.addStudent(st5);
+//			gr6yearKPI.addStudent(st9);
+//			gr6yearKPI.addStudent(st10);
+//			gr6yearKPI.addStudent(st5);
+//			gr6yearKPI.addStudent(st5);
+	//	gr6yearKPI.interactiveAddStudents();
 		} catch (GroupIsOvercrowdedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 		System.out.println(gr6yearKPI.toString());
-
-		System.out.println(Arrays.toString(gr6yearKPI.serchByLastName("Durov")));
+				
+		
+		System.out.println("Studend with last Name durov: "+Arrays.toString(gr6yearKPI.serchByLastName("Durov")));
+		
+		System.out.println("Next recruts are: \n"+Arrays.toString(gr6yearKPI.olderThan18()));
+		
+		System.out.println(gr6yearKPI.toString());
+		
+		gr6yearKPI.sortByFirstName();
+		System.out.println(gr6yearKPI.toString());
 		
 	}
 
