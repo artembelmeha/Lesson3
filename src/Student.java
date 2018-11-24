@@ -1,6 +1,6 @@
+import java.io.Serializable;
 
-
-public class Student extends Human implements Comparable{
+public class Student extends Human implements Comparable, Serializable{
 	private int yearOfEducation; 
 	private String university;
 	public Student() {

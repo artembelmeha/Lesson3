@@ -1,10 +1,20 @@
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
 
-public class Group implements Voenkom {
+public class Group implements Voenkom, Serializable {
+
+
 	private Student [] students = new Student[10];
 
 	public Group() {
@@ -34,25 +44,7 @@ public class Group implements Voenkom {
 		}
 	}
 	
-/*	 Old methods
-	public void sortGroup() {
-		Student tempStr;
-		  for (int t = 0; t < this.students.length - 1; t++) {
-	            for (int i= 0; i < this.students.length - t -1; i++) {
-	            	
-	                if(this.checkSort(this.students[i+1].getLastName(), this.students[i].getLastName())) {
-		                    tempStr = this.students[i];
-		                    this.students[i]=this.students[i+1];
-		                    this.students[i+1]=tempStr; 	
-	                } 
-	            }
-	        }		
 
-	}
-	
-	
-
-*/
 	public boolean checkSort(String s1, String s2) {
 		int flag = 0;
 
@@ -179,30 +171,28 @@ public class Group implements Voenkom {
 			   	}
 	        }	
 	}
-	/*
- 	public Student[] sortByAge() {
-		Arrays.sort(st, (a, b) -> Comp.comp(a, b) != Comp.CON ? Comp.CON : a.getAge() - b.getAge());
-		return st;
-	}
- 	public Student[] sortBySex() {
-		Arrays.sort(st, (a, b) -> {
-			if (Comp.comp(a, b) != Comp.CON) {
-				return Comp.CON;
-			} else {
-				if ((a.getSex() == Sex.Male && b.getSex() == Sex.Male)
-						|| (a.getSex() == Sex.Female && b.getSex() == Sex.Female)) {
-					return 0;
-				}
-				if(a.getSex()==Sex.Female) {
-					return 1;
-				}
-				return -1;
-			}
-		});
-		return st;
+	public void saveGroup(File file) {
+		try(ObjectOutputStream objOStream =
+				new ObjectOutputStream(new FileOutputStream(file))) {
+				objOStream.writeObject(this);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
-	*/
+	public Group openGroup(File file) {
+		try(ObjectInputStream objIStream =
+				new ObjectInputStream(new FileInputStream(file))) {
+				return (Group) objIStream.readObject();
+		} catch (IOException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		} 
+		
+	}
+	
 	
 	
 	

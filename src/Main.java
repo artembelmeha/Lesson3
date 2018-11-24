@@ -1,3 +1,4 @@
+import java.io.File;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
@@ -25,12 +26,8 @@ public class Main {
 			gr6yearKPI.addStudent(st8);
 			gr6yearKPI.addStudent(st7);
 			gr6yearKPI.addStudent(st6);
-//			gr6yearKPI.addStudent(st5);
-//			gr6yearKPI.addStudent(st9);
-//			gr6yearKPI.addStudent(st10);
-//			gr6yearKPI.addStudent(st5);
-//			gr6yearKPI.addStudent(st5);
-	//	gr6yearKPI.interactiveAddStudents();
+
+
 		} catch (GroupIsOvercrowdedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -47,6 +44,14 @@ public class Main {
 		gr6yearKPI.sortByFirstName();
 		System.out.println(gr6yearKPI.toString());
 		
+		
+		File f = new File("Group.txt");
+		gr6yearKPI.saveGroup(f);
+		
+		Group openFromFile = new Group();
+		openFromFile = openFromFile.openGroup(f);
+		System.out.println("From opened fime:");
+		System.out.println(openFromFile.toString());
 	}
 
 }

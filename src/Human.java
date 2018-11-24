@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Human {
+public class Human implements Serializable{
 	private String firstName;
 	private String lastName;
 	private String middleName;
